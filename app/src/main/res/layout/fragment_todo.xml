@@ -4,14 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:weightSum="1">
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/todo_title_label"/>
 
     <EditText
@@ -26,6 +26,12 @@
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:text="@string/todo_detail_label"/>
 
+    <EditText
+        android:id="@+id/todo_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/todo_detail"/>
+
     <Button
         android:id="@+id/todo_date"
         android:layout_width="match_parent"
@@ -36,4 +42,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/todo_complete_label"/>
+
 </LinearLayout>

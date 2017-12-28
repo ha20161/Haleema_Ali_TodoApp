@@ -1,3 +1,8 @@
+# es added for Studio 3
+.idea/misc.xml
+.idea/vcs.xml
+
+
 *.iml
 .gradle
 /local.properties
