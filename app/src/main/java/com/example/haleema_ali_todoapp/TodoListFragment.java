@@ -28,31 +28,18 @@ public class TodoListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
-
-      //  View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
-
-        //initialises Recycler View
-        mTodoRecyclerView = (RecyclerView) view.findViewById(R.id.todo_recycler_view);
-
-        //sets layout of recycler view
-        mTodoRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        updateUI();
-
-        FloatingActionButton newTodo;
-        newTodo = (FloatingActionButton) view.findViewById(R.id.addTodo);
-        newTodo.setOnClickListener(new View.OnClickListener(){
-
+        FloatingActionButton newTodo =
+                (FloatingActionButton) getActivity().findViewById(R.id.addTodo);
+        newTodo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
                 Toast.makeText(getActivity(), "Add new Todo", Toast.LENGTH_SHORT).show();
                 Todo todo = new Todo();
                 TodoModel.get(getActivity()).addTodo(todo);
@@ -61,9 +48,23 @@ public class TodoListFragment extends Fragment {
 
                 Intent intent = TodoPagerActivity.newIntent(getActivity(), todo.getId());
                 startActivity(intent);
-
             }
         });
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
+
+        //initialises Recycler View
+        mTodoRecyclerView = (RecyclerView) view.findViewById(R.id.todo_recycler_view);
+
+        //sets layout of recycler view
+        mTodoRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        updateUI();
 
         return view;
     }
