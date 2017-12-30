@@ -19,7 +19,12 @@
         </activity>
 
         <activity
-            android:name=".TodoPagerActivity"
+            android:name=".AddEditTodoActivity"
+            android:parentActivityName=".TodoListActivity">
+        </activity>
+
+        <activity
+            android:name=".TodoDetailActivity"
             android:parentActivityName=".TodoListActivity">
         </activity>
     </application>

@@ -21,7 +21,7 @@ import java.util.UUID;
  * Created by Haleema on 25/12/2017.
  */
 
-public class TodoFragment extends Fragment {
+public class AddEditTodoFragment extends Fragment {
 
     private static final String ARG_TODO_ID = "todo_id";
 
@@ -31,12 +31,12 @@ public class TodoFragment extends Fragment {
     private Button mButtonDate;
     private CheckBox mCheckBoxIsComplete;
 
-    public static TodoFragment newInstance(UUID todoId) {
+    public static AddEditTodoFragment newInstance(UUID todoId) {
 
         Bundle args = new Bundle();
         args.putSerializable(ARG_TODO_ID, todoId);
 
-        TodoFragment fragment = new TodoFragment();
+        AddEditTodoFragment fragment = new AddEditTodoFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -111,7 +111,7 @@ public class TodoFragment extends Fragment {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d("DEBUG **** TodoFragment","called onCheckedChanged");
+                Log.d("DEBUG **** AddEditTodoFragment","called onCheckedChanged");
                 mTodo.setComplete(isChecked);
             }
         });

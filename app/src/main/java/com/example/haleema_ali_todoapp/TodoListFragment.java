@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Haleema on 15/11/2017.
+ * Created by Haleema on 25/12/2017.
  */
 
 public class TodoListFragment extends Fragment {
@@ -35,8 +35,7 @@ public class TodoListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        FloatingActionButton newTodo =
-                (FloatingActionButton) getActivity().findViewById(R.id.addTodo);
+        FloatingActionButton newTodo = (FloatingActionButton) getActivity().findViewById(R.id.addTodo);
         newTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,12 +45,11 @@ public class TodoListFragment extends Fragment {
                 //Starts new instance of TodoActivity by passing intent to startActivity()
                 //Intent intent = TodoActivity.newIntent(getActivity(), todo.getId());
 
-                Intent intent = TodoPagerActivity.newIntent(getActivity(), todo.getId());
+                Intent intent = AddEditTodoActivity.newIntent(getActivity(), todo.getId());
                 startActivity(intent);
             }
         });
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -117,7 +115,8 @@ public class TodoListFragment extends Fragment {
             Toast.makeText(getActivity(), mTodo.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
 
             //   Intent intent = TodoActivity.newIntent(getActivity(), mTodo.getId());
-            Intent intent = TodoPagerActivity.newIntent(getActivity(), mTodo.getId());
+          //  Intent intent = AddEditTodoActivity.newIntent(getActivity(), mTodo.getId());
+            Intent intent = TodoDetailActivity.newIntent(getActivity(), mTodo.getId());
             startActivity(intent);
         }
 

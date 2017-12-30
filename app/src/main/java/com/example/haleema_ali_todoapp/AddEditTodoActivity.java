@@ -17,7 +17,7 @@ import java.util.UUID;
  * Created by Haleema on 25/12/2017.
  */
 
-public class TodoPagerActivity extends AppCompatActivity {
+public class AddEditTodoActivity extends AppCompatActivity {
 
     private static final String EXTRA_TODO_ID = "todo_id";
 
@@ -26,7 +26,7 @@ public class TodoPagerActivity extends AppCompatActivity {
 
     public static Intent newIntent(Context packageContext, UUID todoId){
 
-        Intent intent = new Intent(packageContext, TodoPagerActivity.class);
+        Intent intent = new Intent(packageContext, AddEditTodoActivity.class);
         intent.putExtra(EXTRA_TODO_ID, todoId);
         return intent;
     }
@@ -50,7 +50,7 @@ public class TodoPagerActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
 
                 Todo todo = mTodos.get(position);
-                return TodoFragment.newInstance(todo.getId());
+                return AddEditTodoFragment.newInstance(todo.getId());
             }
 
             @Override
