@@ -45,22 +45,6 @@ public class TodoDetailFragment extends Fragment {
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        FloatingActionButton editTodo = (FloatingActionButton) getActivity().findViewById(R.id.editTodo);
-        editTodo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Edit Todo", Toast.LENGTH_SHORT).show();
-
-                Intent intent = AddEditTodoActivity.newIntent(getActivity(), mTodo.getId());
-                startActivity(intent);
-            }
-        });
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,7 +64,7 @@ public class TodoDetailFragment extends Fragment {
         editTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Edit Todo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Edit " + mTodo.getTitle(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = AddEditTodoActivity.newIntent(getActivity(), mTodo.getId());
                 startActivity(intent);

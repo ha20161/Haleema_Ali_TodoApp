@@ -37,7 +37,7 @@ public class TodoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_pager);
 
-        UUID todoId =(UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
+        final UUID todoId =(UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
 
         mViewPager = findViewById(R.id.todo_view_pager);
 
@@ -60,7 +60,7 @@ public class TodoDetailActivity extends AppCompatActivity {
             }
         });
 
-        for (int i = 0; i < mTodos.size(); i++) {
+        for (int i = 1; i < mTodos.size(); i++) {
 
             if(mTodos.get(i).getId().equals(todoId)) {
 
