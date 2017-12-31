@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Button;
 
 import java.text.SimpleDateFormat;
 import java.util.UUID;
@@ -42,6 +46,7 @@ public class TodoDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
@@ -78,5 +83,30 @@ public class TodoDetailFragment extends Fragment {
         });
         return view;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_todo_detail, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.delete_todo:
+
+                TodoModel.get(getActivity()).deleteTodo(mTodo);
+                Toast.makeText(getActivity(), mTodo.getTitle() + " deleted!", Toast.LENGTH_SHORT).show();
+                NavUtils.navigateUpFromSameTask(getActivity());
+
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

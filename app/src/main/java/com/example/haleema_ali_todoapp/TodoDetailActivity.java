@@ -44,6 +44,7 @@ public class TodoDetailActivity extends AppCompatActivity {
         mTodos = TodoModel.get(this).getTodos();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
 
             @Override
@@ -58,7 +59,8 @@ public class TodoDetailActivity extends AppCompatActivity {
 
                 return mTodos.size();
             }
-        });
+        }
+        );
 
         for (int i = 1; i < mTodos.size(); i++) {
 

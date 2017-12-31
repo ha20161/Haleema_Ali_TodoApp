@@ -20,7 +20,7 @@
 
         <activity
             android:name=".AddEditTodoActivity"
-            android:parentActivityName=".TodoDetailActivity">
+            android:parentActivityName=".TodoListActivity">
         </activity>
 
         <activity
