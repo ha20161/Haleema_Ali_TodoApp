@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,7 +124,10 @@ public class TodoListFragment extends Fragment {
         public void bind(Todo todo) {
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
-            mTextViewDate.setText(mTodo.getDate().toString());
+
+            String outputPattern = "EEE dd-MMM-yyyy h:mm a";
+            SimpleDateFormat outputDate = new SimpleDateFormat(outputPattern);
+            mTextViewDate.setText(outputDate.format(mTodo.getDate()).toString());
         }
     }
 

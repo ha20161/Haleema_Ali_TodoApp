@@ -23,14 +23,15 @@
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="@android:dimen/notification_large_icon_height"
-        android:text="@string/todo_detail_label"/>
+        android:layout_height="wrap_content"
+        android:text="@string/todo_detail_label" />
 
     <EditText
         android:id="@+id/todo_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/todo_detail"/>
+        android:layout_height="272dp"
+        android:gravity="left"
+        android:hint="@string/todo_detail" />
 
     <Button
         android:id="@+id/todo_date"

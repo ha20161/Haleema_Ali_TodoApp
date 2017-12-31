@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 /**
@@ -24,7 +26,7 @@ public class TodoDetailFragment extends Fragment {
     private Todo mTodo;
     private TextView mTextViewTitle;
     private TextView mTextViewDetail;
-    private TextView mTextViewDate;
+    private Button mButtonDate;
 
     public static TodoDetailFragment newInstance(UUID todoId) {
 
@@ -53,11 +55,15 @@ public class TodoDetailFragment extends Fragment {
 
         mTextViewTitle = (TextView) view.findViewById(R.id.todo_title);
         mTextViewDetail = (TextView) view.findViewById(R.id.todo_detail);
-        mTextViewDate = (TextView) view.findViewById(R.id.todo_date);
+        mButtonDate = (Button) view.findViewById(R.id.todo_date);
 
         mTextViewTitle.setText(mTodo.getTitle());
         mTextViewDetail.setText(mTodo.getDetail());
-        mTextViewDate.setText(mTodo.getDate().toString());
+
+        String outputPattern = "EEE dd-MMM-yyyy h:mm a";
+        SimpleDateFormat outputDate = new SimpleDateFormat(outputPattern);
+        mButtonDate.setText(outputDate.format(mTodo.getDate()).toString());
+        mButtonDate.setEnabled(false);
 
         FloatingActionButton editTodo;
         editTodo = (FloatingActionButton) view.findViewById(R.id.editTodo);

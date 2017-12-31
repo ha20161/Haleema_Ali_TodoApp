@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 /**
@@ -103,7 +103,10 @@ public class AddEditTodoFragment extends Fragment {
         });
 
         mButtonDate = (Button) view.findViewById(R.id.todo_date);
-        mButtonDate.setText(mTodo.getDate().toString());
+        String outputPattern = "EEE dd-MMM-yyyy h:mm a";
+        SimpleDateFormat outputDate = new SimpleDateFormat(outputPattern);
+        mButtonDate.setText(outputDate.format(mTodo.getDate()).toString());
+
         mButtonDate.setEnabled(false);
 
         mCheckBoxIsComplete = (CheckBox) view.findViewById(R.id.todo_complete);
@@ -111,7 +114,7 @@ public class AddEditTodoFragment extends Fragment {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d("DEBUG **** AddEditTodoFragment","called onCheckedChanged");
+
                 mTodo.setComplete(isChecked);
             }
         });
