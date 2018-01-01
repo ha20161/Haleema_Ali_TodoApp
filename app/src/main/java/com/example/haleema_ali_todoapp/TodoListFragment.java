@@ -105,6 +105,7 @@ public class TodoListFragment extends Fragment {
 
             mTextViewTitle = (TextView) itemView.findViewById(R.id.todo_title);
             mTextViewDate = (TextView) itemView.findViewById(R.id.todo_date);
+
         }
 
         //This method Starts new instance of TodoActivity by passing intent to startActivity()

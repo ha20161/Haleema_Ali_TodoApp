@@ -8,4 +8,6 @@
     <string name="todo_complete_label">is it complete</string>
     <string name="todo_date">Todo date</string>
     <string name="todo_delete">Delete Todo</string>
+    <string name="todo_edit">Edit Todo</string>
+    <string name="todo_save">Save Todo</string>
 </resources>

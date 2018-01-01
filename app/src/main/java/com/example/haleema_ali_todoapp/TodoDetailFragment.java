@@ -107,6 +107,4 @@ public class TodoDetailFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

@@ -2,7 +2,9 @@ package com.example.haleema_ali_todoapp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.UUID;
@@ -116,6 +119,18 @@ public class AddEditTodoFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 mTodo.setComplete(isChecked);
+            }
+
+        });
+
+
+        FloatingActionButton saveTodo;
+        saveTodo = (FloatingActionButton) view.findViewById(R.id.saveTodo);
+        saveTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Saved!", Toast.LENGTH_SHORT).show();
+                NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
         return view;
