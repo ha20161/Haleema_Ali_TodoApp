@@ -10,4 +10,8 @@
     <string name="todo_delete">Delete Todo</string>
     <string name="todo_edit">Edit Todo</string>
     <string name="todo_save">Save Todo</string>
+    <string name="todo_list">Todo List</string>
+    <string name="todo_statistics">Statistics</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
