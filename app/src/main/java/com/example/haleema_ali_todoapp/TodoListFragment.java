@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +98,7 @@ public class TodoListFragment extends Fragment {
         private Todo mTodo;
         private TextView mTextViewTitle;
         private TextView mTextViewDate;
+        private CheckBox mCheckBox;
 
         public TodoHolder(LayoutInflater inflater, ViewGroup parent){
 
@@ -105,6 +108,7 @@ public class TodoListFragment extends Fragment {
 
             mTextViewTitle = (TextView) itemView.findViewById(R.id.todo_title);
             mTextViewDate = (TextView) itemView.findViewById(R.id.todo_date);
+            mCheckBox = (CheckBox) itemView.findViewById(R.id.todo_complete);
 
         }
 
@@ -122,6 +126,7 @@ public class TodoListFragment extends Fragment {
             startActivity(intent);
         }
 
+
         public void bind(Todo todo) {
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
@@ -129,6 +134,20 @@ public class TodoListFragment extends Fragment {
             String outputPattern = "EEE dd-MMM-yyyy h:mm a";
             SimpleDateFormat outputDate = new SimpleDateFormat(outputPattern);
             mTextViewDate.setText(outputDate.format(mTodo.getDate()).toString());
+
+            mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    mTodo.setComplete(isChecked);
+                }
+
+            });
+
+            if(todo.isComplete()){
+                mCheckBox.setChecked(true);
+            }
         }
     }
 

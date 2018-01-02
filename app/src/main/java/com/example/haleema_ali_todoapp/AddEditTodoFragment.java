@@ -32,7 +32,7 @@ public class AddEditTodoFragment extends Fragment {
     private EditText mEditTextTitle;
     private EditText mEditTextDetail;
     private Button mButtonDate;
-    private CheckBox mCheckBoxIsComplete;
+    private CheckBox mCheckBox;
 
     public static AddEditTodoFragment newInstance(UUID todoId) {
 
@@ -112,17 +112,22 @@ public class AddEditTodoFragment extends Fragment {
 
         mButtonDate.setEnabled(false);
 
-        mCheckBoxIsComplete = (CheckBox) view.findViewById(R.id.todo_complete);
-        mCheckBoxIsComplete.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+        mCheckBox = (CheckBox) view.findViewById(R.id.todo_complete);
+
+        mCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 mTodo.setComplete(isChecked);
+
             }
 
         });
 
+        if(mTodo.isComplete()){
+            mCheckBox.setChecked(true);
+        }
 
         FloatingActionButton saveTodo;
         saveTodo = (FloatingActionButton) view.findViewById(R.id.saveTodo);
@@ -133,6 +138,7 @@ public class AddEditTodoFragment extends Fragment {
                 NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
+
         return view;
     }
 }

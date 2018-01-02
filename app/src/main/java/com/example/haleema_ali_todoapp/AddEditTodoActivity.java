@@ -48,43 +48,4 @@ public class AddEditTodoActivity extends AppCompatActivity {
             fm.beginTransaction().add(R.id.fragment_container, todoFragment).commit();
         }
     }
-
-  /*  @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todo_pager);
-
-        UUID todoId =(UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
-
-        mViewPager = findViewById(R.id.todo_view_pager);
-
-        mTodos = TodoModel.get(this).getTodos();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
-
-            @Override
-            public Fragment getItem(int position) {
-
-                Todo todo = mTodos.get(position);
-                return AddEditTodoFragment.newInstance(todo.getId());
-            }
-
-            @Override
-            public int getCount() {
-
-                return mTodos.size();
-            }
-        });
-
-        for (int i = 0; i < mTodos.size(); i++) {
-
-            if(mTodos.get(i).getId().equals(todoId)) {
-
-                mViewPager.setCurrentItem(i);
-                break;
-            }
-        }
-    } */
 }
