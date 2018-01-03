@@ -1,25 +1,27 @@
 package com.example.haleema_ali_todoapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NavUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+/**
+ * Created by Haleema on 03/01/2018.
+ */
 
-public class TodoListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class TodoStatistics extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_fragment);
@@ -39,20 +41,17 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
-        if (fragment == null){
+        if(fragment == null){
 
-            TodoListFragment todoListFragment = new TodoListFragment();
-
-            // adds fragment to calling activities view.
-            // a fragment is inserted into FrameLayout view object of TodoListActivity
-            fm.beginTransaction().add(R.id.fragment_container, todoListFragment).commit();
+            TodoStatisticsFragment todoStatisticsFragment = new TodoStatisticsFragment();
+            fm.beginTransaction().add(R.id.fragment_container, todoStatisticsFragment).commit();
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(mToggle.onOptionsItemSelected(item)){
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -65,15 +64,17 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
 
         switch (menuitem.getItemId()){
             case R.id.TodoListIcon:
+
+                NavUtils.navigateUpFromSameTask(TodoStatistics.this);
                 break;
             case R.id.StatisticsIcon:
-
-                Intent intent = new Intent(TodoListActivity.this, TodoStatistics.class);
-                startActivity(intent);
                 break;
             default:
                 break;
         }
         return true;
     }
+
 }
+
+

@@ -69,4 +69,21 @@ public class TodoModel {
 
         mTodoList.remove(todo);
     }
+
+    public int count(){
+       return mTodoList.size();
+    }
+
+    public int countCompleted(){
+
+        int count = 0;
+
+        for(int i = 0; i < mTodoList.size(); i++){
+
+            if(mTodoList.get(i).isComplete()){
+              count++;
+            }
+        }
+        return count;
+    }
 }
