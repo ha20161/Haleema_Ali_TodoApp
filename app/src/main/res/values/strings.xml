@@ -14,4 +14,6 @@
     <string name="todo_statistics">Statistics</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="clear_completed">Clear</string>
+    <string name="check_all">Check All</string>
 </resources>

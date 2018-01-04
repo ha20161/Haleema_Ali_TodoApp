@@ -7,9 +7,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -46,7 +43,6 @@ public class TodoDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
 
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
@@ -70,6 +66,19 @@ public class TodoDetailFragment extends Fragment {
         mButtonDate.setText(outputDate.format(mTodo.getDate()).toString());
         mButtonDate.setEnabled(false);
 
+        FloatingActionButton deleteTodo;
+        deleteTodo = (FloatingActionButton) view.findViewById(R.id.deleteTodo);
+        deleteTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TodoModel.get(getActivity()).deleteTodo(mTodo);
+                Toast.makeText(getActivity(), mTodo.getTitle() + " deleted!", Toast.LENGTH_SHORT).show();
+                NavUtils.navigateUpFromSameTask(getActivity());
+
+            }
+        });
+
         FloatingActionButton editTodo;
         editTodo = (FloatingActionButton) view.findViewById(R.id.editTodo);
         editTodo.setOnClickListener(new View.OnClickListener() {
@@ -84,27 +93,5 @@ public class TodoDetailFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_todo_detail, menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-
-            case R.id.delete_todo:
-
-                TodoModel.get(getActivity()).deleteTodo(mTodo);
-                Toast.makeText(getActivity(), mTodo.getTitle() + " deleted!", Toast.LENGTH_SHORT).show();
-                NavUtils.navigateUpFromSameTask(getActivity());
-
-                return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

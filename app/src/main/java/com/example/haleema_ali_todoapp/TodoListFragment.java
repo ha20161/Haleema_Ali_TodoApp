@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -31,6 +34,7 @@ public class TodoListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
     }
 
@@ -68,6 +72,33 @@ public class TodoListFragment extends Fragment {
         updateUI();
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.clear_icon:
+
+                TodoModel.get(getActivity()).todoDeleteAll();
+                Toast.makeText(getActivity(), "All Todos deleted!", Toast.LENGTH_SHORT).show();
+                updateUI();
+                break;
+            case R.id.check_all:
+                TodoModel.get(getActivity()).markAllComplete();
+                Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
+                updateUI();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -125,7 +156,6 @@ public class TodoListFragment extends Fragment {
             Intent intent = TodoDetailActivity.newIntent(getActivity(), mTodo.getId());
             startActivity(intent);
         }
-
 
         public void bind(Todo todo) {
             mTodo = todo;

@@ -3,6 +3,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,9 +18,10 @@
     <TextView
         android:id="@+id/todo_detail"
         android:layout_width="321dp"
-        android:layout_height="336dp"
+        android:layout_height="277dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:layout_marginTop="24dp"
         android:text="@string/todo_detail"
         android:textColor="#696969"
@@ -31,13 +33,15 @@
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/todo_date"
-        android:layout_width="279dp"
+        android:layout_width="321dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginStart="8dp"
         android:text="@string/todo_date"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
@@ -52,6 +56,19 @@
         android:src="@android:drawable/ic_menu_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/deleteTodo"
+        android:layout_width="72dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:title="@string/todo_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 

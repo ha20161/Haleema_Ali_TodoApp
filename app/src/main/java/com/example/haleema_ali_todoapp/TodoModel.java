@@ -15,8 +15,6 @@ public class TodoModel {
 
     private ArrayList<Todo> mTodoList;
 
-
-
     public static TodoModel get(Context context) {
 
         if(sTodoModel == null){
@@ -85,5 +83,22 @@ public class TodoModel {
             }
         }
         return count;
+    }
+
+    public void todoDeleteAll(){
+
+        mTodoList.clear();
+    }
+
+    public void markAllComplete(){
+
+        Todo mTodo;
+
+        for (int i = 0; i < mTodoList.size(); i++){
+
+           mTodo = mTodoList.get(i);
+           mTodo.setComplete(true);
+
+        }
     }
 }
