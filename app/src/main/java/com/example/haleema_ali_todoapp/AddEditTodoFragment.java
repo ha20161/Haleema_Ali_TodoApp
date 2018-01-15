@@ -120,7 +120,6 @@ public class AddEditTodoFragment extends Fragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 mTodo.setComplete(isChecked);
-
             }
 
         });

@@ -22,7 +22,7 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fragment);
+        setContentView(R.layout.activity_main_fragment);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);

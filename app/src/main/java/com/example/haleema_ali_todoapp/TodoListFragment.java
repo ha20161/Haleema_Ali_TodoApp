@@ -56,6 +56,17 @@ public class TodoListFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        FloatingActionButton deleteAll = (FloatingActionButton) getActivity().findViewById(R.id.clearList);
+        deleteAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TodoModel.get(getActivity()).todoDeleteAll();
+                Toast.makeText(getActivity(), "All Todos deleted!", Toast.LENGTH_SHORT).show();
+                updateUI();
+            }
+        });
     }
 
     @Override
@@ -85,12 +96,6 @@ public class TodoListFragment extends Fragment {
 
         switch (item.getItemId()){
 
-            case R.id.clear_icon:
-
-                TodoModel.get(getActivity()).todoDeleteAll();
-                Toast.makeText(getActivity(), "All Todos deleted!", Toast.LENGTH_SHORT).show();
-                updateUI();
-                break;
             case R.id.check_all:
                 TodoModel.get(getActivity()).markAllComplete();
                 Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
@@ -171,6 +176,7 @@ public class TodoListFragment extends Fragment {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                     mTodo.setComplete(isChecked);
+
                 }
 
             });
