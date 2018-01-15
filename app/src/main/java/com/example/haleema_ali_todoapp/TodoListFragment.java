@@ -1,9 +1,11 @@
 package com.example.haleema_ali_todoapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -59,12 +61,50 @@ public class TodoListFragment extends Fragment {
 
         FloatingActionButton deleteAll = (FloatingActionButton) getActivity().findViewById(R.id.clearList);
         deleteAll.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
-                TodoModel.get(getActivity()).todoDeleteAll();
-                Toast.makeText(getActivity(), "All Todos deleted!", Toast.LENGTH_SHORT).show();
-                updateUI();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                if (TodoModel.get(getActivity()).count() == 0){
+
+                    builder.setMessage(R.string.dialog_warning).setTitle(R.string.dialog_title).setCancelable(false);
+
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            dialogInterface.cancel();
+                        }
+                    });
+
+                }
+                else{
+                    builder.setMessage(R.string.delete_message).setTitle(R.string.dialog_title).setCancelable(false);
+
+                    builder.setPositiveButton(R.string.proceed, new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            TodoModel.get(getActivity()).todoDeleteAll();
+                            Toast.makeText(getActivity(), "All Todos deleted!", Toast.LENGTH_SHORT).show();
+                            updateUI();
+                        }
+                    });
+
+                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            dialogInterface.cancel();
+                        }
+                    });
+                }
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
@@ -97,10 +137,15 @@ public class TodoListFragment extends Fragment {
         switch (item.getItemId()){
 
             case R.id.check_all:
-                TodoModel.get(getActivity()).markAllComplete();
-                Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
-                updateUI();
 
+                if (TodoModel.get(getActivity()).count() == 0){
+                    Toast.makeText(getActivity(), "First add some Todos!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    TodoModel.get(getActivity()).markAllComplete();
+                    Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
+                    updateUI();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -16,4 +16,10 @@
     <string name="close">Close</string>
     <string name="clear_completed">Clear</string>
     <string name="check_all">Check All</string>
+    <string name="delete_message">This action will delete all Todos!</string>
+    <string name="dialog_title">Warning</string>
+    <string name="dialog_warning">There are no Todos to delete</string>
+    <string name="proceed">Proceed</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>
