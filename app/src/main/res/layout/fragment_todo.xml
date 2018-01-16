@@ -11,6 +11,7 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#e28399"
         android:text="@string/todo_title_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,7 +20,9 @@
         android:id="@+id/todo_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#e798aa"
         android:hint="@string/todo_title_hint"
+        android:textColorHint="#e798aa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -28,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
+        android:textColor="#e28399"
         android:gravity="top"
         android:text="@string/todo_detail_label"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,24 +40,26 @@
     <EditText
         android:id="@+id/todo_detail"
         android:layout_width="match_parent"
-        android:layout_height="254dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
         android:layout_marginBottom="140dp"
+        android:textColor="#e798aa"
         android:hint="@string/todo_detail"
+        android:textColorHint="#e798aa"
         android:textAlignment="textStart"
-        android:layout_gravity="start"
+        android:lines="11"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/todo_date"
-        android:layout_width="279dp"
+        android:layout_width="208dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
+        android:layout_marginBottom="88dp"
+        android:background="#f9f9f9"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/todo_complete"
@@ -63,6 +69,8 @@
         android:layout_marginStart="264dp"
         android:layout_marginLeft="264dp"
         android:text="@string/todo_complete_label"
+        android:textColor="#e28399"
+        android:buttonTint="#e28399"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -78,5 +86,18 @@
         android:src="@drawable/ic_menu_check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/deleteTodo"
+        android:layout_width="72dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:title="@string/todo_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

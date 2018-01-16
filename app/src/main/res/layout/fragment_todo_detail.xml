@@ -3,7 +3,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,36 +11,38 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="47dp"
+        android:textColor="#e798aa"
         android:text="@string/todo_title"
-        android:textSize="24dp" />
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/todo_detail"
         android:layout_width="321dp"
         android:layout_height="277dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
         android:text="@string/todo_detail"
-        android:textColor="#696969"
-        android:textSize="20dp"
+        android:textColor="#e798aa"
+        android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/todo_date"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todo_title"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/todo_date"
-        android:layout_width="321dp"
+        android:layout_width="239dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="84dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="#f9f9f9"
         android:text="@string/todo_date"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.FloatingActionButton

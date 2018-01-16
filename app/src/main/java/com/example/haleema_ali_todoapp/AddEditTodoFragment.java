@@ -128,6 +128,19 @@ public class AddEditTodoFragment extends Fragment {
             mCheckBox.setChecked(true);
         }
 
+        FloatingActionButton deleteTodo;
+        deleteTodo = (FloatingActionButton) view.findViewById(R.id.deleteTodo);
+        deleteTodo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TodoModel.get(getActivity()).deleteTodo(mTodo);
+                Toast.makeText(getActivity(), "deleted!", Toast.LENGTH_SHORT).show();
+                NavUtils.navigateUpFromSameTask(getActivity());
+
+            }
+        });
+
         FloatingActionButton saveTodo;
         saveTodo = (FloatingActionButton) view.findViewById(R.id.saveTodo);
         saveTodo.setOnClickListener(new View.OnClickListener() {
