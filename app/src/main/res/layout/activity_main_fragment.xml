@@ -28,4 +28,35 @@
         app:menu="@menu/navigation_menu">
     </android.support.design.widget.NavigationView>
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addTodo"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_action_add"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/clearList"
+            android:layout_width="72dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_icon_clear"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
 </android.support.v4.widget.DrawerLayout>
