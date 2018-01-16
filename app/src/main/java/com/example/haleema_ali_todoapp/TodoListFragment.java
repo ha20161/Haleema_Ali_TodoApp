@@ -75,7 +75,7 @@ public class TodoListFragment extends Fragment {
                 if (TodoModel.get(getActivity()).count() == 0){
                     Toast.makeText(getActivity(), "First add some Todos!", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else{
                     TodoModel.get(getActivity()).markAllComplete();
                     Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
                     updateUI();
