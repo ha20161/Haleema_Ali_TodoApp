@@ -8,6 +8,6 @@
         android:id="@+id/check_all"
         android:title="@string/check_all"
         android:icon="@drawable/ic_menu_checkall"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="ifRoom"/>
 
 </menu>
