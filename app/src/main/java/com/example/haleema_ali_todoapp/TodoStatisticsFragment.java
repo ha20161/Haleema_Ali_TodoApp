@@ -34,12 +34,11 @@ public class TodoStatisticsFragment extends Fragment {
         mTextViewActive = (TextView) view.findViewById(R.id.tasks_active);
         mTextViewTotal = (TextView) view.findViewById(R.id.tasks_total);
 
-        mTextViewCompleted.setText("Completed Tasks: " + TodoModel.get(getActivity()).countCompleted());
+        mTextViewCompleted.setText("Recipes tried: " + TodoModel.get(getActivity()).countCompleted());
 
-        mTextViewActive.setText("Active Tasks: " + (TodoModel.get(getActivity()).count() - TodoModel.get(getActivity()).countCompleted()));
+        mTextViewActive.setText("Recipes to try: " + (TodoModel.get(getActivity()).count() - TodoModel.get(getActivity()).countCompleted()));
 
-        mTextViewTotal.setText("Total number of tasks:  "+TodoModel.get(getActivity()).count());
-
+        mTextViewTotal.setText("Total number of Recipes: " + TodoModel.get(getActivity()).count());
 
         return view;
     }

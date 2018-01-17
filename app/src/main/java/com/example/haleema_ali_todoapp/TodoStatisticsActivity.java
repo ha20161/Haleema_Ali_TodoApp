@@ -15,7 +15,7 @@ import android.view.MenuItem;
  * Created by Haleema on 03/01/2018.
  */
 
-public class TodoStatistics extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class TodoStatisticsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -65,7 +65,7 @@ public class TodoStatistics extends AppCompatActivity implements NavigationView.
         switch (menuitem.getItemId()){
             case R.id.TodoListIcon:
 
-                NavUtils.navigateUpFromSameTask(TodoStatistics.this);
+                NavUtils.navigateUpFromSameTask(TodoStatisticsActivity.this);
                 break;
             case R.id.StatisticsIcon:
                 break;

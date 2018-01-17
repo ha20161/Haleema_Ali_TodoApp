@@ -53,21 +53,23 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
             fm.beginTransaction().add(R.id.fragment_container, todoListFragment).commit();
         }
 
+        //Creates and implements floating action button to add new recipe
         FloatingActionButton newTodo = (FloatingActionButton) findViewById(R.id.addTodo);
         newTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TodoListActivity.this, "Add new Todo", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(TodoListActivity.this, "Add new Recipe", Toast.LENGTH_SHORT).show();
                 Todo todo = new Todo();
                 TodoModel.get(TodoListActivity.this).addTodo(todo);
-                //Starts new instance of TodoActivity by passing intent to startActivity()
-                //Intent intent = TodoActivity.newIntent(getActivity(), todo.getId());
 
+                //Starts new instance of AddEditTodoActivity by passing intent to startActivity()
                 Intent intent = AddEditTodoActivity.newIntent(TodoListActivity.this, todo.getId());
                 startActivity(intent);
             }
         });
 
+        //Creates and implements floating action button to delete all recipes
         FloatingActionButton deleteAll = (FloatingActionButton) findViewById(R.id.clearList);
         deleteAll.setOnClickListener(new View.OnClickListener() {
 
@@ -89,6 +91,8 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
                     });
 
                 }
+
+                //Dialog box to confirm action
                 else{
                     builder.setMessage(R.string.delete_message).setTitle(R.string.dialog_title).setCancelable(false);
 
@@ -97,7 +101,7 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             TodoModel.get(TodoListActivity.this).todoDeleteAll();
-                            Toast.makeText(TodoListActivity.this, "All Todos deleted!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TodoListActivity.this, "All Recipes deleted!", Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(getIntent());
                         }
@@ -130,14 +134,16 @@ public class TodoListActivity extends AppCompatActivity implements NavigationVie
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem menuitem) {
-        // Handle navigation view item clicks here.
+
+        // Handles navigation menu item actions
 
         switch (menuitem.getItemId()){
             case R.id.TodoListIcon:
                 break;
             case R.id.StatisticsIcon:
 
-                Intent intent = new Intent(TodoListActivity.this, TodoStatistics.class);
+                //Starts new instance of TodoStatisticsActivity Activity by passing intent to startActivity()
+                Intent intent = new Intent(TodoListActivity.this, TodoStatisticsActivity.class);
                 startActivity(intent);
                 break;
             default:

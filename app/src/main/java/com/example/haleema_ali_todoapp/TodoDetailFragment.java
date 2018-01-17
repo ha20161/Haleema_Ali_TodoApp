@@ -73,7 +73,7 @@ public class TodoDetailFragment extends Fragment {
             public void onClick(View view) {
 
                 TodoModel.get(getActivity()).deleteTodo(mTodo);
-                Toast.makeText(getActivity(), mTodo.getTitle() + " deleted!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), mTodo.getTitle() + " recipe deleted!", Toast.LENGTH_SHORT).show();
                 NavUtils.navigateUpFromSameTask(getActivity());
 
             }
@@ -84,7 +84,7 @@ public class TodoDetailFragment extends Fragment {
         editTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Edit " + mTodo.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Edit " + mTodo.getTitle() + " recipe", Toast.LENGTH_SHORT).show();
 
                 Intent intent = AddEditTodoActivity.newIntent(getActivity(), mTodo.getId());
                 startActivity(intent);
@@ -92,6 +92,4 @@ public class TodoDetailFragment extends Fragment {
         });
         return view;
     }
-
-
 }

@@ -135,7 +135,7 @@ public class AddEditTodoFragment extends Fragment {
             public void onClick(View view) {
 
                 TodoModel.get(getActivity()).deleteTodo(mTodo);
-                Toast.makeText(getActivity(), "deleted!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), mTodo.getTitle() + " recipe deleted!", Toast.LENGTH_SHORT).show();
                 NavUtils.navigateUpFromSameTask(getActivity());
 
             }

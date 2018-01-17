@@ -73,11 +73,11 @@ public class TodoListFragment extends Fragment {
             case R.id.check_all:
 
                 if (TodoModel.get(getActivity()).count() == 0){
-                    Toast.makeText(getActivity(), "First add some Todos!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "First add some Recipes!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     TodoModel.get(getActivity()).markAllComplete();
-                    Toast.makeText(getActivity(), "All Todos completed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "All Recipes marked completed!", Toast.LENGTH_SHORT).show();
                     updateUI();
                 }
                 break;
@@ -132,7 +132,7 @@ public class TodoListFragment extends Fragment {
         //TodoActivity shows details stored for todo stored at mTodo index
         @Override
         public void onClick(View view) {
-            // have a Toast for now
+
             Toast.makeText(getActivity(), mTodo.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
 
             //   Intent intent = TodoActivity.newIntent(getActivity(), mTodo.getId());

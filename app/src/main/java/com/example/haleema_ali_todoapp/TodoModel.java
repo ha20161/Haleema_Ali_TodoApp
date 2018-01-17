@@ -29,11 +29,11 @@ public class TodoModel {
 
         mTodoList = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
 
             Todo todo = new Todo();
-            todo.setTitle("Todo title " + i);
-            todo.setDetail("Detail of task ");
+            todo.setTitle("Chocolate cake");
+            todo.setDetail("Ingredients: ");
             todo.setComplete(false);
 
             mTodoList.add(todo);
