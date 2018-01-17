@@ -45,7 +45,9 @@ public class TodoDetailActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
+
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+
 
             @Override
             public Fragment getItem(int position) {
