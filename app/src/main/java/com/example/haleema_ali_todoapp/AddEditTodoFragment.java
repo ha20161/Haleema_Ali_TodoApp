@@ -34,6 +34,11 @@ public class AddEditTodoFragment extends Fragment {
     private Button mButtonDate;
     private CheckBox mCheckBox;
 
+    /*
+        Rather than calling the constructor directly, Activity(s) should call newInstance
+        and pass required parameters that the fragment needs to create its argument
+     */
+
     public static AddEditTodoFragment newInstance(UUID todoId) {
 
         Bundle args = new Bundle();
@@ -48,6 +53,23 @@ public class AddEditTodoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        /*
+            Fragment accessing the intent from the hosting Activity as in the following code snippet
+            allows for simple code that works.
+
+            UUID todoId = (UUID) getActivity()
+                    .getIntent().getSerializableExtra(TodoActivity.EXTRA_TODO_ID);
+
+            The disadvantage: AddEditTodoFragment is no longer reusable as it is coupled to Activities who's
+            intent has to contain todoId.
+
+            Solution: store the todoId in the fragment's arguments bundle.
+                See the TodoFragment newInstance(UUID todoId) method.
+
+            Then to create a new fragment. the TodoActivity should call TodoFragment.newInstance(UUID)
+            and pass in the UUID it retrieves from its extra argument.
+         */
 
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
@@ -128,6 +150,7 @@ public class AddEditTodoFragment extends Fragment {
             mCheckBox.setChecked(true);
         }
 
+        //Creates and implements floating action button to delete current todo
         FloatingActionButton deleteTodo;
         deleteTodo = (FloatingActionButton) view.findViewById(R.id.deleteTodo);
         deleteTodo.setOnClickListener(new View.OnClickListener() {
@@ -136,21 +159,25 @@ public class AddEditTodoFragment extends Fragment {
 
                 TodoModel.get(getActivity()).deleteTodo(mTodo);
                 Toast.makeText(getActivity(), mTodo.getTitle() + " recipe deleted!", Toast.LENGTH_SHORT).show();
+
+                //returns to main activity
                 NavUtils.navigateUpFromSameTask(getActivity());
 
             }
         });
 
+        //Creates and implements floating action button to save current todo
         FloatingActionButton saveTodo;
         saveTodo = (FloatingActionButton) view.findViewById(R.id.saveTodo);
         saveTodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Saved!", Toast.LENGTH_SHORT).show();
+
+                //returns to main activity
                 NavUtils.navigateUpFromSameTask(getActivity());
             }
         });
-
         return view;
     }
 }

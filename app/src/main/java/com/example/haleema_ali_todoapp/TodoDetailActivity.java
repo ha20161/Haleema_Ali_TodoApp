@@ -24,6 +24,8 @@ public class TodoDetailActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private List<Todo> mTodos;
 
+    //Any calling activity would call this static method and pass the necessary
+    //key, value data pair in an intent object
     public static Intent newIntent(Context packageContext, UUID todoId){
 
         Intent intent = new Intent(packageContext, TodoDetailActivity.class);
@@ -43,8 +45,9 @@ public class TodoDetailActivity extends AppCompatActivity {
 
         mTodos = TodoModel.get(this).getTodos();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        // fragment manger is created
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
 
@@ -53,6 +56,8 @@ public class TodoDetailActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
 
                 Todo todo = mTodos.get(position);
+
+                //returns a new instance of TodoDetailFragment showing the details for the todo at the current index
                 return TodoDetailFragment.newInstance(todo.getId());
             }
 

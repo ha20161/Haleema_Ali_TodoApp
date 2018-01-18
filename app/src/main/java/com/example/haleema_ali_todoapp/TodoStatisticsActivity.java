@@ -22,27 +22,37 @@ public class TodoStatisticsActivity extends AppCompatActivity implements Navigat
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        // call the super class onCreate to complete the creation of activity
+        // like the view hierarchy
         super.onCreate(savedInstanceState);
 
+        // set the user interface layout for this Activity
+        // layout file is defined in the project res/layout/activity_main_fragment.xml file
         setContentView(R.layout.activity_fragment);
 
+        //Drawer Layout to allow navigation bar to be pulled out from edge of the window
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
+        //adds toggle button to drawer layout
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        //Initialises navigation bar and adds navigation item listener
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // returns fragment manager for interacting with fragments associated with this fragments activity
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if(fragment == null){
 
+            // adds fragment to calling activities view.
+            // a fragment is inserted into FrameLayout view object of TodoStatisticsActivity
             TodoStatisticsFragment todoStatisticsFragment = new TodoStatisticsFragment();
             fm.beginTransaction().add(R.id.fragment_container, todoStatisticsFragment).commit();
         }
@@ -65,6 +75,7 @@ public class TodoStatisticsActivity extends AppCompatActivity implements Navigat
         switch (menuitem.getItemId()){
             case R.id.TodoListIcon:
 
+                //returns to main activity
                 NavUtils.navigateUpFromSameTask(TodoStatisticsActivity.this);
                 break;
             case R.id.StatisticsIcon:
@@ -76,5 +87,3 @@ public class TodoStatisticsActivity extends AppCompatActivity implements Navigat
     }
 
 }
-
-

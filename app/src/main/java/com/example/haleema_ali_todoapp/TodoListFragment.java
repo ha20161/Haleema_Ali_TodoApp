@@ -38,12 +38,6 @@ public class TodoListFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
@@ -68,6 +62,7 @@ public class TodoListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        // Handles menu item actions
         switch (item.getItemId()){
 
             case R.id.check_all:
@@ -127,16 +122,13 @@ public class TodoListFragment extends Fragment {
 
         }
 
-        //This method Starts new instance of TodoActivity by passing intent to startActivity()
+        //This method Starts new instance of TodoDetailActivity by passing intent to startActivity()
         //when an existing todo is clicked
         //TodoActivity shows details stored for todo stored at mTodo index
         @Override
         public void onClick(View view) {
 
             Toast.makeText(getActivity(), mTodo.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
-
-            //   Intent intent = TodoActivity.newIntent(getActivity(), mTodo.getId());
-          //  Intent intent = AddEditTodoActivity.newIntent(getActivity(), mTodo.getId());
             Intent intent = TodoDetailActivity.newIntent(getActivity(), mTodo.getId());
             startActivity(intent);
         }
@@ -145,10 +137,14 @@ public class TodoListFragment extends Fragment {
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
 
+            // format for date and time
             String outputPattern = "EEE dd-MMM-yyyy h:mm a";
             SimpleDateFormat outputDate = new SimpleDateFormat(outputPattern);
+
+            // sets format for date and time
             mTextViewDate.setText(outputDate.format(mTodo.getDate()).toString());
 
+            //adds listener to checkbox and stores state using setComplete method from Todo class
             mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
                 @Override
@@ -160,6 +156,7 @@ public class TodoListFragment extends Fragment {
 
             });
 
+            //If todo is set as complete then shows as ticked
             if(todo.isComplete()){
                 mCheckBox.setChecked(true);
             }

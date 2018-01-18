@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -19,9 +17,8 @@ public class AddEditTodoActivity extends AppCompatActivity {
 
     private static final String EXTRA_TODO_ID = "todo_id";
 
-    private ViewPager mViewPager;
-    private List<Todo> mTodos;
-
+    //Any calling activity would call this static method and pass the necessary
+    //key, value data pair in an intent object
     public static Intent newIntent(Context packageContext, UUID todoId){
 
         Intent intent = new Intent(packageContext, AddEditTodoActivity.class);
@@ -29,6 +26,10 @@ public class AddEditTodoActivity extends AppCompatActivity {
         return intent;
     }
 
+    /*
+        To decouple the fragment and make it reusable, the TodoFragment has a newInstance method
+        that receives a todoId and returns the fragment
+    */
     protected Fragment createFragment(){
         UUID todoId = (UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
         return AddEditTodoFragment.newInstance(todoId);
